@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Itodo } from '../../model/todo';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
+  @Input() todoObj !: Array<Itodo>
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  trackById(index: number, todo: Itodo){
+    return todo.todoId
   }
 
 }

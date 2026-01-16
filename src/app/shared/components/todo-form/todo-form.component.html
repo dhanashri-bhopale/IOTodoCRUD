@@ -1,1 +1,23 @@
-<p>todo-form works!</p>
+
+<div class="card">
+    <div class="card-body">
+        <form #todoForm="ngForm">
+            <div class="form-group">
+                <label for="todoItem">TodoItem</label>
+                <input 
+                required
+                ngModel 
+                name="todoItem" 
+                #todoItem="ngModel" 
+                type="text" class="form-control">
+
+                <strong class="text-danger" *ngIf="todoItem.touched && todoItem.invalid">
+                    TodoItem is an required field!!!
+                </strong>
+            </div>
+        </form>
+
+        <button *ngIf="!isInEditMode" class="btn-block" mat-raised-button color="primary">Add Todo</button>
+        <button *ngIf="isInEditMode" class="btn-block" mat-raised-button color="accent">Update Todo</button>
+    </div>
+</div>
