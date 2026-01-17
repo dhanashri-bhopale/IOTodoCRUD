@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 import { TodoDashboardComponent } from './shared/components/todo-dashboard/todo-dashboard.component';
 import { TodoListComponent } from './shared/components/todo-list/todo-list.component';
 import { TodoFormComponent } from './shared/components/todo-form/todo-form.component';
@@ -23,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Itodo } from '../../model/todo';
 
 @Component({
@@ -9,6 +9,8 @@ import { Itodo } from '../../model/todo';
 export class TodoListComponent implements OnInit {
   @Input() todoObj !: Array<Itodo>
 
+  @Output() emitEditTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +18,11 @@ export class TodoListComponent implements OnInit {
 
   trackById(index: number, todo: Itodo){
     return todo.todoId
+  }
+
+
+  onEditTodo(t : Itodo){
+    this.emitEditTodo.emit(t)
   }
 
 }
