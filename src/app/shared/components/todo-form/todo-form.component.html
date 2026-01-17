@@ -1,7 +1,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form #todoForm="ngForm">
+        <form #todoForm="ngForm" (ngSubmit)="onTodoAdd()">
             <div class="form-group">
                 <label for="todoItem">TodoItem</label>
                 <input 
@@ -15,9 +15,15 @@
                     TodoItem is an required field!!!
                 </strong>
             </div>
+            <button 
+            [disabled]="!todoForm.valid"
+            *ngIf="!isInEditMode"
+            mat-raised-button color="primary" class="btn-block" type="submit">
+                Add Todo
+        </button>
+        <button *ngIf="isInEditMode" class="btn-block" mat-raised-button color="accent">Update Todo</button>
+    
         </form>
 
-        <button *ngIf="!isInEditMode" class="btn-block" mat-raised-button color="primary">Add Todo</button>
-        <button *ngIf="isInEditMode" class="btn-block" mat-raised-button color="accent">Update Todo</button>
-    </div>
+       </div>   
 </div>

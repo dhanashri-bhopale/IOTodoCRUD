@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Itodo } from '../../model/todo';
 
 @Component({
   selector: 'app-todo-form',
@@ -8,6 +9,8 @@ import { NgForm } from '@angular/forms';
 })
 export class TodoFormComponent implements OnInit {
   @ViewChild('todoForm') todoForm !: NgForm
+
+  @Output() emitNewTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
   isInEditMode : boolean = false
 
   constructor() { }
@@ -15,6 +18,17 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
+    onTodoAdd(){ 
+    if(this.todoForm.valid){
+        let todo:Itodo={
+      ...this.todoForm.value,
+      todoId:Date.now().toString()
+    }
+    console.log(todo)
+    this.todoForm.reset()
+    this.emitNewTodo.emit(todo)
+    }
+  }
 
 }
