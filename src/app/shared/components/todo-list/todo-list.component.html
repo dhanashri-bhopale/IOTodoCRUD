@@ -9,7 +9,9 @@
                 <button (click)="onEditTodo(todo)" class="mr-2" mat-mini-fab color="primary">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-mini-fab color="warn">
+                <button
+                (click)="onRemove(todo)"
+                 mat-mini-fab color="warn">
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>

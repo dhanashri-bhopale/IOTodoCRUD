@@ -50,8 +50,30 @@ export class TodoDashboardComponent implements OnInit {
         horizontalPosition : 'left',
         verticalPosition : 'bottom',
         duration : 3000
+      })
+    }
+  getNewTodo(todo:Itodo){
+    this.todoArr.unshift(todo)
+    this._snackBar.open(`The to item with id ${todo.todoId} is added successfully!!`,'Close',
+      {
+        horizontalPosition:'left',
+        verticalPosition:'top',
+        duration:3000
       }
     )
   }
 
-}
+  getRemoveId(todo:Itodo){
+   let getIndex = this.todoArr.findIndex(t=>t.todoId === todo.todoId)
+   this.todoArr.splice(getIndex,1)
+   this._snackBar.open(`Do you want to remove todoItem with id${todo.todoId}`,'Close',{
+    horizontalPosition:'left',
+    verticalPosition:'top',
+    duration:3000
+   }
+   )
+  }
+  }
+
+
+

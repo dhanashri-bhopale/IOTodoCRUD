@@ -9,6 +9,8 @@ import { Itodo } from '../../model/todo';
 })
 export class TodoFormComponent implements OnInit, OnChanges {
   @ViewChild('todoForm') todoForm !: NgForm
+
+  @Output() emitNewTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
   isInEditMode : boolean = false
   @Input() getEditTodos !: Itodo
 
@@ -37,5 +39,17 @@ export class TodoFormComponent implements OnInit, OnChanges {
       this.todoForm.reset()
     }
   }
-
+    onTodoAdd(){ 
+    if(this.todoForm.valid){
+        let todo={
+      ...this.todoForm.value,
+      todoId:Date.now().toString()
+    }
+    console.log(todo)
+    this.todoForm.reset()
+    this.emitNewTodo.emit(todo)
+    }
+  }
 }
+
+

@@ -4,10 +4,13 @@
             <app-todo-form
                 [getEditTodos]="editTodo"
                 (emitUpdateTodo)="getUpdateTodo($event)"
+                 (emitNewTodo)="getNewTodo($event)"
             ></app-todo-form>
         </div>
+        
         <div class="col-md-7 offset-md-1">
             <app-todo-list
+            (emitRemoveId)="getRemoveId($event)"
             (emitEditTodo)="getEditTodo($event)"
             [todoObj]="todoArr"
             ></app-todo-list>
